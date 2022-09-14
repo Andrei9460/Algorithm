@@ -13,27 +13,24 @@
 $arr  = [2, 5 ,3 , 2 ,3, 6, 7, 7 ,8];
 
 function selectionSort(array $arr) {
-    $count= count($arr);
-    if ($count <= 1){
-        return $arr;
-    }
+    $size = count($arr);
 
-    for ($i = 0; $i < $count - 1; $i++){
-        $k = $i;
+    for ($i = 0; $i < $size-1; $i++)
+    {
+        $min = $i;
 
-        for($j = $i + 1; $j < $count; $j++){
-            if ($arr[$k] > $arr[$j]){
-                $k = $j;
-            }
-
-            if ($k != $i){
-                $tmp = $arr[$i];
-                $arr[$i] = $arr[$k];
-                $arr[$k] = $tmp;
+        for ($j = $i + 1; $j < $size; $j++)
+        {
+            if ($arr[$j] < $arr[$min])
+            {
+                $min = $j;
             }
         }
-    }
 
+        $temp = $arr[$i];
+        $arr[$i] = $arr[$min];
+        $arr[$min] = $temp;
+    }
     return $arr;
 }
 
